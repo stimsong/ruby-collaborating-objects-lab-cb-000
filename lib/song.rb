@@ -1,15 +1,12 @@
 class Song
-  attr_accessor :song_name, :artist_name
+  attr_accessor :song_name, :artist_name, :songs
 
   def initialize(song_name)
     @song_name = song_name
   end
 
   def new_by_filename(file)
-    songs = []
-    file.each do |song|
-      songs << song.slice(" - ")
-    end
+    self.new = file.slice(" - ")
   end
 
   def artist_name=(artist_name)
