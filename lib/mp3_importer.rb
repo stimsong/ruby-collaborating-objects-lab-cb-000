@@ -10,8 +10,8 @@ class MP3Importer
     # gets only files that end in .mp3 from @path directory, stores in filenames
     filenames = Dir.glob("#{@path}/*.mp3")
 
-    # trying to strip each filename up to the last slash(/) by finding the index
-    # number and using slice to return everything after that
+    # using rindex for each filename to find the last slash(/) and using that index
+    # number slice to return everything after that
     filenames.each do |file|
       last_slash_index = file.rindex(/\//)
       alt_filenames << file.slice(last_slash_index+1..-1)
