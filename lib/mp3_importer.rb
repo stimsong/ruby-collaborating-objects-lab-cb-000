@@ -14,7 +14,7 @@ class MP3Importer
     # number and using slice to return everything after that
     filenames.each do |file|
       last_slash_index = file.rindex(/\//)
-      alt_filenames << file.slice(last_slash_index..-1)
+      alt_filenames << file.slice(last_slash_index+1..-1)
     end
 
     alt_filenames
