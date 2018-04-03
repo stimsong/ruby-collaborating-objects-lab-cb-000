@@ -6,7 +6,7 @@ class MP3Importer
   end
 
   def files
-    @alt_filenames =[]
+#    @alt_filenames =[]
     # gets only files that end in .mp3 from @path directory, stores in filenames
     filenames = Dir.glob("#{@path}/*.mp3")
 
@@ -17,7 +17,7 @@ class MP3Importer
       alt_filenames << file.slice(last_slash_index+1..-1)
     end
 
-    @alt_filenames
+#    @alt_filenames
   end
 
   def import
