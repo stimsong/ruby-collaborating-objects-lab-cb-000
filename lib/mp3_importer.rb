@@ -1,26 +1,31 @@
 class MP3Importer
-  attr_accessor :path
+  attr_accessor :path, :alt_filenames
 
   def initialize(test_music_path)
     @path = test_music_path
   end
 
   def files
+    @alt_filenames =[]
     # gets only files that end in .mp3 from @path directory, stores in filenames
     filenames = Dir.glob("#{@path}/*.mp3")
 
-    # trying to strip each filename up to the last slash(/) by finding the index
-    # number and using slice to return everything after that
+    # using rindex for each filename to find the last slash(/) and using that index
+    # number slice to return everything after that
     filenames.each do |file|
       last_slash_index = file.rindex(/\//)
-      alt_filenames = file.slice(last_slash_index)
+      alt_filenames << file.slice(last_slash_index+1..-1)
     end
 
-    filenames
+    @alt_filenames
   end
 
   def import
+    files.each do |file|
+      Song.new_by_filename(file)
+    end
   end
+
 
 
 end
