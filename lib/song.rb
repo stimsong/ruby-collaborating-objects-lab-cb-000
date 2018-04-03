@@ -6,7 +6,10 @@ class Song
   end
 
   def new_by_filename(file)
-
+    songs = []
+    file.each do |song|
+      songs << song.slice(" - ")
+    end
   end
 
   def artist_name=(artist_name)
